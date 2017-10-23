@@ -1,7 +1,6 @@
 /**
  * @file Starts the application by creating a HTTP server that holds the API
  */
-
 require('./config/config')
 
 const express = require('express')
@@ -15,7 +14,7 @@ app.use(bodyParser.json())
 routes(app)
 
 const server = app.listen(process.env.PORT, () => {
-  console.log(`Started on port ${process.env.PORT}`)
+  log.info(`Started on: http://localhost:${process.env.PORT}`)
 })
 
 module.exports = {

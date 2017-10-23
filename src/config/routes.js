@@ -29,6 +29,8 @@ module.exports = (app) => {
       })
       .catch((e) => {
         return res.status(500).send(e)
+        log.error('500 Internal Server Error')
+        log.error(e)
       })
   })
 

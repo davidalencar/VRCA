@@ -110,7 +110,6 @@ context('integration tests', () => {
         .expect(200)
         .expect((res) => {
           expect(res.body.foundProperties).toBe(1)
-          expect(res.body.properties[0].id).toBe(1)
         })
         .end(done)
     })
