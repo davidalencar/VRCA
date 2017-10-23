@@ -3,7 +3,7 @@
 
 Esse projeto vai nos ajudar a instalar uma unidade da nossa querida VivaReal no planeta Spotippos.
 
-Nós mapeamos todas as províncias e propriedades antigo reino de Zillia e disponibilizamos os dados através de uma API REST, onde você pode consultar informações sobre qualquer propriedade específica  ou todas as propriedades em um determinado quadrante do planeta e até mesmo registrar novas propriedades.
+Nós mapeamos todas as províncias e imóveis do antigo reino de Zillia e disponibilizamos os dados através de uma API REST, onde você pode consultar informações sobre um imóvel específica ou todos as imóveis em um determinado quadrante do planeta e até mesmo registrar novos imóveis.
 
 
 ## Primeiros passos
@@ -68,7 +68,7 @@ Você pode utilizar de uma interface gráfica para mongoDB, como [roboMongo](htt
 
 #### #Importando dados iniciais
 
-Nosso mapeamento das províncias e propriedades do planeja  Spotippos gerou uma massa de dados que foi compilada em dois arquivos “.json”, que estão presentes no nosso projeto em “src/util/data”, que deve ser importada.
+Nosso mapeamento das províncias e imóveis do planeja  Spotippos gerou uma massa de dados que foi compilada em dois arquivos “.json”, que estão presentes no nosso projeto em “src/util/data”, que deve ser importada.
 
 É imperativo a importação desses dados para os banco de dados antes da execução dos teste.
 
@@ -99,10 +99,10 @@ make start
 
 > Local padrão: http://localhost:3000/ ** 3000 = PORT configurada no arquivo /src/config/config.json
 
-#### #Registrando propriedades
+#### #Registrando imóveis
 ###### POST /properties
 
-Esperamos a seguinte estrutura para registrar uma nova propriedade:
+Esperamos a seguinte estrutura para registrar um novo imóvel:
 
 Headers
 
@@ -183,15 +183,15 @@ Abaixo a tabela de validações sobre cada campo:
  ```
 > Exemplo em que o campo “x” ultrapassa o limite de 1400.
 
-#### #Consultando propriedades
+#### #Consultando imóveis
 
-Na versão atual nossa API suporta dois tipos de consultas por propriedades, que serão descritas abaixo:
+Na versão atual nossa API suporta dois tipos de consultas por imóveis, que serão descritas abaixo:
 
 ###### GET /properties/:id
 
-Consulta uma propriedade específica a partir do seu id.
+Consulta um imóvel específica a partir do seu id.
 
-**Respota de sucesso -** Caso uma propriedade corresponda a pesquisa a resposta seguirá a seguinte estrutura:
+**Respota de sucesso -** Caso um imóvel corresponda a pesquisa a resposta seguirá a seguinte estrutura:
 
 *HTTP status: 200*
 
@@ -212,7 +212,7 @@ Consulta uma propriedade específica a partir do seu id.
 }
 ```
 
-**Respota para propriedade não encontrada -** Caso o id solicitado não exista na base a resposta seguirá a seguinte estrutura:
+**Respota para imóvel não encontrado -** Caso o id solicitado não exista na base a resposta seguirá a seguinte estrutura:
 
 *HTTP status: 404 Not Found*
 
@@ -220,11 +220,11 @@ Consulta uma propriedade específica a partir do seu id.
 
 ###### GET /properties?ax={integer}&ay={integer}&bx={integer}&by={integer}
 
-Consulta as propriedades dentro de um quadrante, que é definido a partir dos ponto A, superior direito, e B inferior esquerdo.
+Consulta os imóveis dentro de um quadrante, que é definido a partir dos ponto A, superior direito, e B inferior esquerdo.
 
 Na requisição os pontos A e B são representados respectivamente pelos parâmetros (ax,ay) e (bx,by).
 
-**Respota de sucesso -** Caso propriedades sejam encontrada dentro dessas coordenadas a resposta seguirá a seguinte estrutura:
+**Respota de sucesso -** Caso imóveis sejam encontrados dentro dessas coordenadas a resposta seguirá a seguinte estrutura:
 
 *HTTP status: 200*
 
@@ -251,7 +251,7 @@ Na requisição os pontos A e B são representados respectivamente pelos parâme
     ]
 }
 ```
-**Respota para nenhuma propriedade encontrada -** Caso nenhuma propriedade seja encontrada no quadrante:
+**Respota para nenhuma imóvel encontrada -** Caso nenhum imóvel seja encontrado no quadrante:
 
 *HTTP status: 404 Not Found*
 
