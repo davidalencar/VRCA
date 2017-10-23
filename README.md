@@ -59,12 +59,12 @@ Você pode utilizar de uma interface gráfica para mongoDB, como [roboMongo](htt
   }
 }
 ```
-    - A chave “test” agrupa as variáveis de ambiente que serão carregadas durante a execução dos testes.      
+- A chave **“test”** agrupa as variáveis de ambiente que serão carregadas durante a execução dos testes.      
 
-    - A chave “development”  agrupa as variáveis de ambiente que serão carregadas durante a execução da aplicação em tempo de desenvolvimento.
+- A chave “development”  agrupa as variáveis de ambiente que serão carregadas durante a execução da aplicação em tempo de desenvolvimento.
 
-        - **Porta de execução:** Altere o valor da chave **__“PORT”__** para definir outra porta de execução em seu respectivo ambiente.
-        - **Conexão com banco de dados:** Defina o valor da chave “MONGODB_URI” com a ConnectionString do seu respectivo ambiente.
+- **Porta de execução:** Altere o valor da chave **__“PORT”__** para definir outra porta de execução em seu respectivo ambiente.
+- **Conexão com banco de dados:** Defina o valor da chave “MONGODB_URI” com a ConnectionString do seu respectivo ambiente.
 
 #### #Importando dados iniciais
 
