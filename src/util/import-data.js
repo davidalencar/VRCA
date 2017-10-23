@@ -45,7 +45,10 @@ const importProperties = new Promise((resolve, reject) => {
       baths: propData.baths,
       squareMeters: propData.squareMeters
     })
-    saves.push(property.save())
+    saves.push(property.save().then((doc) => {
+      doc.id = propData.id;
+      return doc.save();
+    }))
   }
   Promise.all(saves)
     .then((ret) => {
