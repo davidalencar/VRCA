@@ -61,12 +61,12 @@ const findPropertyById = (id) => {
       })
       .then((doc) => {
         if (!doc) {
-          resolve(null)
+          return resolve(null)
         }
 
         fullProperty(doc)
           .then((propObj) => {
-            resolve(propObj)
+            return resolve(propObj)
           })
       })
       .catch((e) => {
@@ -101,11 +101,11 @@ const findPropertyByQuadrant = (ax, ay, bx, by) => {
         Promise.all(fullProperties)
           .then((result) => {
             retObj.properties = result
-            resolve(retObj)
+            return resolve(retObj)
           })
       })
       .catch((e) => {
-        reject(e)
+        return reject(e)
       })
   })
 }
