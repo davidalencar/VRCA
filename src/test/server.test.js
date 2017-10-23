@@ -104,12 +104,23 @@ context('integration tests', () => {
         .end(done)
     })
 
-    it('Should return all properties in a quadrant', (done) => {
+    it('Should just one properties in a quadrant', (done) => {
       request(app)
-        .get('/properties?ax=0&ay=0&bx=5&by=5')
+        .get('/properties?ax=1257&ay=928&bx=1257&by=928')
         .expect(200)
         .expect((res) => {
-          expect(res.body.foundProperties).toBeGreaterThan(0)
+          expect(res.body.foundProperties).toBe(1)
+          expect(res.body.properties[0].id).toBe(1)
+        })
+        .end(done)
+    })
+
+    it('Should return all properties in a quadrant', (done) => {
+      request(app)
+        .get('/properties?ax=0&ay=100&bx=100&by=0')
+        .expect(200)
+        .expect((res) => {
+          expect(res.body.foundProperties).toBeGreaterThan(1)
           expect(res.body.properties.length).toBe(res.body.foundProperties)
         })
         .end(done)

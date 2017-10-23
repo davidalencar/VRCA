@@ -57,8 +57,8 @@ const createProperty = (prop) => {
 const findPropertyById = (id) => {
   return new Promise((resolve, reject) => {
     Property.findOne({
-      'id': id
-    })
+        'id': id
+      })
       .then((doc) => {
         if (!doc) {
           resolve(null)
@@ -78,24 +78,20 @@ const findPropertyById = (id) => {
 const findPropertyByQuadrant = (ax, ay, bx, by) => {
   return new Promise((resolve, reject) => {
     Property.find({
-      'x': {
-        $gte: ax
-      },
-      'x': {
-        $lte: bx
-      },
-      'y': {
-        $lte: ay
-      },
-      'y': {
-        $gte: by
-      }
-    })
+        'x': {
+          $gte: ax,
+          $lte: bx
+        },
+        'y': {
+          $gte: by,
+          $lte: ay
+        },
+      })
       .then((docs) => {
         var retObj = {}
         retObj.foundProperties = docs.length
 
-        if (!docs.length) resolve(retObj)
+        if (!docs.length) return resolve(retObj)
 
         var fullProperties = []
 
