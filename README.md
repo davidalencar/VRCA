@@ -5,6 +5,10 @@ Esse projeto vai nos ajudar a instalar uma unidade da nossa querida VivaReal no 
 
 Nós mapeamos todas as províncias e imóveis do antigo reino de Zillia e disponibilizamos os dados através de uma API REST, onde você pode consultar informações sobre um imóvel específico ou todos os imóveis em um determinado quadrante do planeta e até mesmo registrar novos imóveis.
 
+## Construido com:
+- [express](https://github.com/expressjs/express)
+- [mongoose](https://github.com/Automattic/mongoose)
+- [mongodb](https://github.com/mongodb/node-mongodb-native)
 
 ## Primeiros passos
 
@@ -90,6 +94,14 @@ Para executar os teste basta utilizar o comando:
 ```
 make test
 ```
+
+## Documentando
+Para gerar a documentação da API automaticamente nós utilizamos o [jsdoc](https://www.npmjs.com/package/jsdoc). Idealmente esse processo deve compor uma rotina de integração contínua.
+
+```
+make document
+```
+
 ## Rodando a aplicação
 Uma vez que todas as configurações foram feitas, basta executar o comando abaixo em **_(/VRCA$)_**
 
@@ -274,11 +286,6 @@ GET /properties?ax={integer}&ay={integer}&bx={integer}&by={integer}
 *HTTP status: 404 Not Found*
 
 *Body: Sem informações*
-
-## Construido com:
-- [express](https://github.com/expressjs/express)
-- [mongoose](https://github.com/Automattic/mongoose)
-- [mongodb](https://github.com/mongodb/node-mongodb-native)
 
 ## Agradecimentos
 
