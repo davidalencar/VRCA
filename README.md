@@ -24,7 +24,7 @@ Como proceder para baixar e instalar o projeto.
 ```
 git clone git@github.com:davidalencar/VRCA.git
 ```
-Um novo diretório chamado “VRCA” será criado e será a raiz do projeto.
+Um novo diretório chamado "VRCA" será criado e será a raiz do projeto.
 
 - Acesse o diretório raiz do projeto e execute o seguinte comando:
 ```
@@ -32,21 +32,22 @@ make install
 ```
 Um script será executado e fará a instalação de todos os módulos requiridos no projeto
 
-#### #Configurando
-Alguns passos de configuração são necessários antes de executar nossa API no ambiente de desenvolvimento ou executar as rotinas de testes.
+## Configurando
 
-- Criar bancos de dados separados para execução em tempo de desenvolvimento e em tempo de testes. Essa abordagem é necessária para manter os dados usados para testes consistentes.
-  - Nomes sugeridos para os bancos de dados:
+#### #Criar bancos de dados:
+
+No mongoDB crie **_DOIS_** bancos de dados, um para excecução de testes e outro para ser manipulado em tempo de desenvolvimento.
+
 ```
-VRCA
-VRCATest
+desenvolvimento: VRCA
+testes: VRCATest
 ```
-Você pode utilizar de uma interface gráfica para mongoDB, como [roboMongo](https://robomongo.org/download), para concluir essa tarefa.
+>Você pode utilizar de uma interface gráfica para mongoDB, como [roboMongo](https://robomongo.org/download), para concluir essa tarefa.
 
+#### #Configurar variáveis de ambiente:
 
-- Configurar variáveis de ambiente:
+Localize o arquivo de configuração **__"/src/config/config.json"__** com a seguinte estrutura:
 
-  - Localize o arquivo de configuração **__“/src/config/config.json”__** com a seguinte estrutura:
 ```json
 {
   "test":{
@@ -59,16 +60,17 @@ Você pode utilizar de uma interface gráfica para mongoDB, como [roboMongo](htt
   }
 }
 ```
-- A chave **“test”** agrupa as variáveis de ambiente que serão carregadas durante a execução dos testes.      
+- **"test"** agrupa as variáveis de ambiente que serão carregadas durante a execução dos testes.      
 
-- A chave “development”  agrupa as variáveis de ambiente que serão carregadas durante a execução da aplicação em tempo de desenvolvimento.
+- **"development"**  agrupa as variáveis de ambiente que serão carregadas durante a execução da aplicação em tempo de desenvolvimento.
 
-- **Porta de execução:** Altere o valor da chave **__“PORT”__** para definir outra porta de execução em seu respectivo ambiente.
-- **Conexão com banco de dados:** Defina o valor da chave “MONGODB_URI” com a ConnectionString do seu respectivo ambiente.
+- **"PORT"** Define uma porta de execução em seu respectivo ambiente.
+
+- **"MONGODB_URI"** ConnectionString para o banco de dados do seu respectivo ambiente.
 
 #### #Importando dados iniciais
 
-Nosso mapeamento das províncias e imóveis do planeja  Spotippos gerou uma massa de dados que foi compilada em dois arquivos “.json”, que estão presentes no nosso projeto em “src/util/data”, que deve ser importada.
+Nosso mapeamento das províncias e imóveis do planeja  Spotippos gerou uma massa de dados que foi compilada em dois arquivos ".json", que estão presentes no nosso projeto em "src/util/data", que deve ser importada.
 
 É imperativo a importação desses dados para os banco de dados antes da execução dos teste.
 
@@ -181,7 +183,7 @@ Abaixo a tabela de validações sobre cada campo:
     "name": "ValidationError"
 }
  ```
-> Exemplo em que o campo “x” ultrapassa o limite de 1400.
+> Exemplo em que o campo "x" ultrapassa o limite de 1400.
 
 #### #Consultando imóveis
 
