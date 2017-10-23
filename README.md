@@ -3,7 +3,7 @@
 
 Esse projeto vai nos ajudar a instalar uma unidade da nossa querida VivaReal no planeta Spotippos.
 
-Nós mapeamos todas as províncias e imóveis do antigo reino de Zillia e disponibilizamos os dados através de uma API REST, onde você pode consultar informações sobre um imóvel específica ou todos as imóveis em um determinado quadrante do planeta e até mesmo registrar novos imóveis.
+Nós mapeamos todas as províncias e imóveis do antigo reino de Zillia e disponibilizamos os dados através de uma API REST, onde você pode consultar informações sobre um imóvel específico ou todos os imóveis em um determinado quadrante do planeta e até mesmo registrar novos imóveis.
 
 
 ## Primeiros passos
@@ -24,9 +24,9 @@ Como proceder para baixar e instalar o projeto.
 ```
 git clone git@github.com:davidalencar/VRCA.git
 ```
-Um novo diretório chamado "VRCA" será criado e será a raiz do projeto.
+Um novo diretório chamado "VRCA" será criado e será a raiz do projeto. **_(/VRCA$)_**
 
-- Acesse o diretório raiz do projeto e execute o seguinte comando:
+- Acesse **_(/VRCA$)_** e execute o seguinte comando:
 ```
 make install
 ```
@@ -72,9 +72,9 @@ Localize o arquivo de configuração **__"/src/config/config.json"__** com a seg
 
 Nosso mapeamento das províncias e imóveis do planeja  Spotippos gerou uma massa de dados que foi compilada em dois arquivos ".json", que estão presentes no nosso projeto em "src/util/data", que deve ser importada.
 
-É imperativo a importação desses dados para os banco de dados antes da execução dos teste.
+É imperativo a importação desses dados para os bancos de dados antes da execução dos teste.
 
-No diretório raiz da execute o seguinte comando:
+Em **_(/VRCA$)_** execute o seguinte comando:
 
 ```
 make import-data
@@ -91,7 +91,7 @@ Para executar os teste basta utilizar o comando:
 make test
 ```
 ## Rodando a aplicação
-Uma vez que todas as configurações foram feitas basta executar a linda de comando abaixo no seu terminal a partir do diretório raiz
+Uma vez que todas as configurações foram feitas, basta executar o comando abaixo em **_(/VRCA$)_**
 
 ```
 make start
@@ -102,7 +102,11 @@ make start
 > Local padrão: http://localhost:3000/ ** 3000 = PORT configurada no arquivo /src/config/config.json
 
 #### #Registrando imóveis
-###### POST /properties
+
+Request:
+```
+POST /properties
+```
 
 Esperamos a seguinte estrutura para registrar um novo imóvel:
 
@@ -126,11 +130,11 @@ Abaixo a tabela de validações sobre cada campo:
 
 | Campo  | Requerido | Mínimo | Máximo|
 | ------ | --------- |------- | ----- |
+|x|Sim|0|1400|
+|y|Sim|0|1000|
 |title|Sim|length: 20|length: 120|
 |price|Sim|0.01|n/a|
 |description|Sim|length: 20|length: 255|
-|x|Sim|0|1400|
-|y|Sim|0|1000|
 |beds|Sim|1|5|
 |baths|Sim|1|4|
 |squareMeters|Sim|20|240|
@@ -189,9 +193,15 @@ Abaixo a tabela de validações sobre cada campo:
 
 Na versão atual nossa API suporta dois tipos de consultas por imóveis, que serão descritas abaixo:
 
-###### GET /properties/:id
 
-Consulta um imóvel específica a partir do seu id.
+**## Consulta imóvel por `id`:**
+
+Consulta um imóvel específico a partir do seu `id`
+
+Request:
+```
+GET /properties/:id
+```
 
 **Respota de sucesso -** Caso um imóvel corresponda a pesquisa a resposta seguirá a seguinte estrutura:
 
@@ -220,11 +230,17 @@ Consulta um imóvel específica a partir do seu id.
 
 *Body: Sem informações*
 
-###### GET /properties?ax={integer}&ay={integer}&bx={integer}&by={integer}
+**## Consultar imóvel por quadrante:**
 
-Consulta os imóveis dentro de um quadrante, que é definido a partir dos ponto A, superior direito, e B inferior esquerdo.
+Consulta os imóveis dentro de um quadrante, que é definido a partir dos pontos A, superior direito, e B inferior esquerdo.
 
 Na requisição os pontos A e B são representados respectivamente pelos parâmetros (ax,ay) e (bx,by).
+
+Request:
+```
+GET /properties?ax={integer}&ay={integer}&bx={integer}&by={integer}
+```
+
 
 **Respota de sucesso -** Caso imóveis sejam encontrados dentro dessas coordenadas a resposta seguirá a seguinte estrutura:
 
@@ -253,7 +269,7 @@ Na requisição os pontos A e B são representados respectivamente pelos parâme
     ]
 }
 ```
-**Respota para nenhuma imóvel encontrada -** Caso nenhum imóvel seja encontrado no quadrante:
+**Respota para nenhum imóvel encontrado -** Caso nenhum imóvel seja encontrado no quadrante:
 
 *HTTP status: 404 Not Found*
 
