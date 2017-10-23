@@ -1,5 +1,5 @@
 /**
- * @file Starts the application by creating a HTTP server that holds the API
+ * Starts the application by creating a HTTP server that holds the API
  */
 require('./config/config')
 

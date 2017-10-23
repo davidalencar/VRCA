@@ -1,3 +1,6 @@
+/**
+ * Logic model of a Province
+ */
 const mongoose = require('mongoose')
 
 var ProvinceSchema = mongoose.Schema({

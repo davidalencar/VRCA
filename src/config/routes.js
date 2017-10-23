@@ -1,3 +1,6 @@
+/**
+ * Creates the routes exposed in the API
+ */
 const validator = require('validator')
 const repository = require('../domain/repository')
 

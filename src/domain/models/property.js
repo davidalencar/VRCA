@@ -1,3 +1,7 @@
+/**
+ * Logic model of a Property
+ */
+
 const mongoose = require('mongoose')
 const AutoIncrement = require('mongoose-sequence')(mongoose)
 
@@ -56,6 +60,9 @@ var PropertySchema = mongoose.Schema({
   }
 })
 
+/**
+ * Set the field 'id' as auto incremented
+ */
 PropertySchema.plugin(AutoIncrement, {
   inc_field: 'id',
   id: 'PropertyId'

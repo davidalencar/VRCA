@@ -1,3 +1,7 @@
+/**
+ * Encapsulate data accesses 
+ */
+
 require('../db/mongoose')
 
 /* eslint-disable no-dupe-keys */
@@ -11,6 +15,11 @@ var {
   Province
 } = require('./models/province')
 
+/**
+ * @param {number} x Coordinate 'x' of the point
+ * @param {number} y Coordinate 'y' of the point
+ * @description Return all provinces by a specific point
+ */
 const findProvinceByLocation = (x, y) => {
   return Province.find({
     'boundaries.upperLeft.x': {
@@ -28,6 +37,10 @@ const findProvinceByLocation = (x, y) => {
   })
 }
 
+/**
+ * @param {Object} prop Property request body
+ * @description Create a new Property
+ */
 const createProperty = (prop) => {
   return new Promise((resolve, reject) => {
     const property = new Property({
@@ -54,6 +67,10 @@ const createProperty = (prop) => {
   })
 }
 
+/**
+ * @param {number} id Property Id
+ * @description Return a Property with an array of Provinces
+ */
 const findPropertyById = (id) => {
   return new Promise((resolve, reject) => {
     Property.findOne({
@@ -75,6 +92,13 @@ const findPropertyById = (id) => {
   })
 }
 
+/**
+ * @param {number} ax Coordinate 'x' of the point A
+ * @param {number} ay Coordinate 'y' of the point A
+ * @param {number} bx Coordinate 'x' of the point B
+ * @param {number} by Coordinate 'y' of the point B
+ * @description Return an object that contains an array of all the Properties founded in the quadrant (ax,ay)(bx,by)
+ */
 const findPropertyByQuadrant = (ax, ay, bx, by) => {
   return new Promise((resolve, reject) => {
     Property.find({
@@ -110,6 +134,10 @@ const findPropertyByQuadrant = (ax, ay, bx, by) => {
   })
 }
 
+/**
+ * @param {Property} prop
+ * @description Build a representation of a Property with an array of Provinces
+ */
 const fullProperty = (prop) => {
   return new Promise((resolve, reject) => {
     findProvinceByLocation(prop.x, prop.y)

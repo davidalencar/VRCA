@@ -1,7 +1,6 @@
 /**
- * @file Initialize the environment variables
+ * Initialize the environment variables
  */
-
 const Log = require('log')
 log = new Log('info')
 

@@ -1,3 +1,6 @@
+/**
+ * Script that imports the data to the application database
+ */
 require('../config/config')
 const {
   mongoose
