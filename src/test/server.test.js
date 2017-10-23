@@ -61,7 +61,7 @@ describe('GET /properties/:id', () => {
   it('Should not return a Property', (done) => {
     request(app)
       .get('/properties/0')
-      .expect(404)      
+      .expect(404)
       .end(done)
   })
 })
@@ -92,6 +92,13 @@ describe('GET /properties/', () => {
     request(app)
       .get('/properties?ax=0&ay=0&bx=5')
       .expect(400)
+      .end(done)
+  })
+
+  it('Should return 404', (done) => {
+    request(app)
+      .get('/properties?ax=0&ay=0&bx=1&by=1')
+      .expect(404)      
       .end(done)
   })
 

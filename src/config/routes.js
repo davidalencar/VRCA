@@ -53,6 +53,7 @@ module.exports = (app) => {
 
     repository.findPropertyByQuadrant(ax, ay, bx, by)
       .then((retObj) => {
+        if(!retObj.foundProperties) return res.status(404).send();
         return res.status(200).send(retObj)
       })
   })
