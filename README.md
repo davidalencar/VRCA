@@ -47,7 +47,7 @@ Você pode utilizar de uma interface gráfica para mongoDB, como [roboMongo](htt
 - Configurar variáveis de ambiente:
 
   - Localize o arquivo de configuração **__“/src/config/config.json”__** com a seguinte estrutura:
-```
+```json
 {
   "test":{
     "PORT": 3000,
@@ -84,6 +84,186 @@ Testes automatizados foram criados para garantir que todas as funcionalidades cu
 Idealmente a execução desses testes fará parte de uma rotina de integração contínua.
 
 Para executar os teste basta utilizar o comando:
+
 ```
 make test
 ```
+## Rodando a aplicação
+Uma vez que todas as configurações foram feitas basta executar a linda de comando abaixo no seu terminal a partir do diretório raiz
+
+```
+make start
+```
+
+## Consumindo a API
+
+> Local padrão: http://localhost:3000/ ** 3000 = PORT configurada no arquivo /src/config/config.json
+
+#### #Registrando propriedades
+###### POST /properties
+
+Esperamos a seguinte estrutura para registrar uma nova propriedade:
+
+Headers
+
+*Content-Type: "application/json"*
+
+```json
+{
+  "x": 1200,
+  "y": 90,
+  "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  "price": 100,
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  "beds": 4,
+  "baths": 3,
+  "squareMeters": 210
+}
+```
+Abaixo a tabela de validações sobre cada campo:
+
+| Campo  | Requerido | Mínimo | Máximo|
+| ------ | --------- |------- | ----- |
+|title|Sim|length: 20|length: 120|
+|price|Sim|0.01|n/a|
+|description|Sim|length: 20|length: 255|
+|x|Sim|0|1400|
+|y|Sim|0|1000|
+|beds|Sim|1|5|
+|baths|Sim|1|4|
+|squareMeters|Sim|20|240|
+
+ **Respota de sucesso -** Caso o corpo da requisição esteja correto a resposta seguirá a seguinte estrutura:
+
+*HTTP status: 200*
+
+ ```json
+ {
+    "id": 8002,
+    "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "price": 100,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "x": 1400,
+    "y": 90,
+    "beds": 4,
+    "baths": 3,
+    "provinces": [
+        "Nova"
+    ],
+    "squareMeters": 210
+}
+ ```
+**Respota de erro -** Caso o corpo da requisição contenha alguma irregularidade a nossa resposta seguirá esse estrutura:
+
+*HTTP status: 400*
+
+```json
+{
+    "errors": {
+        "x": {
+            "message": "X must be less than or equal to 1400",
+            "name": "ValidatorError",
+            "properties": {
+                "max": 1400,
+                "type": "max",
+                "message": "X must be less than or equal to 1400",
+                "path": "x",
+                "value": 1401
+            },
+            "kind": "max",
+            "path": "x",
+            "value": 1401,
+            "$isValidatorError": true
+        }
+    },
+    "_message": "Property validation failed",
+    "message": "Property validation failed: x: X must be less than or equal to 1400",
+    "name": "ValidationError"
+}
+ ```
+> Exemplo em que o campo “x” ultrapassa o limite de 1400.
+
+#### #Consultando propriedades
+
+Na versão atual nossa API suporta dois tipos de consultas por propriedades, que serão descritas abaixo:
+
+###### GET /properties/:id
+
+Consulta uma propriedade específica a partir do seu id.
+
+**Respota de sucesso -** Caso uma propriedade corresponda a pesquisa a resposta seguirá a seguinte estrutura:
+
+*HTTP status: 200*
+
+```json
+{
+    "id": 100,
+    "title": "Imóvel código 127, com 5 quartos e 4 banheiros.",
+    "price": 1898000,
+    "description": "Laboris qui id cupidatat sunt quis magna minim aliqua ea veniam esse consectetur esse est. Incididunt et do ullamco cupidatat adipisicing.",
+    "x": 680,
+    "y": 627,
+    "beds": 5,
+    "baths": 4,
+    "provinces": [
+        "Ruja"
+    ],
+    "squareMeters": 185
+}
+```
+
+**Respota para propriedade não encontrada -** Caso o id solicitado não exista na base a resposta seguirá a seguinte estrutura:
+
+*HTTP status: 404 Not Found*
+
+*Body: Sem informações*
+
+###### GET /properties?ax={integer}&ay={integer}&bx={integer}&by={integer}
+
+Consulta as propriedades dentro de um quadrante, que é definido a partir dos ponto A, superior direito, e B inferior esquerdo.
+
+Na requisição os pontos A e B são representados respectivamente pelos parâmetros (ax,ay) e (bx,by).
+
+**Respota de sucesso -** Caso propriedades sejam encontrada dentro dessas coordenadas a resposta seguirá a seguinte estrutura:
+
+*HTTP status: 200*
+
+```json
+{
+    "foundProperties": 13,
+    "properties": [
+        {
+            "id": 1288,
+            "title": "Imóvel código 1184, com 5 quartos e 4 banheiros.",
+            "price": 1053000,
+            "description": "Aliquip dolor elit adipisicing mollit Lorem. Duis adipisicing voluptate quis amet.",
+            "x": 4,
+            "y": 521,
+            "beds": 5,
+            "baths": 4,
+            "provinces": [
+                "Gode"
+            ],
+            "squareMeters": 103
+        },
+        {...},
+        {...}
+    ]
+}
+```
+**Respota para nenhuma propriedade encontrada -** Caso nenhuma propriedade seja encontrada no quadrante:
+
+*HTTP status: 404 Not Found*
+
+*Body: Sem informações*
+
+## Construido com:
+- [express](https://github.com/expressjs/express)
+- [mongoose](https://github.com/Automattic/mongoose)
+- [mongodb](https://github.com/mongodb/node-mongodb-native)
+
+## Agradecimentos
+
+Obrigado ${avaliador}, que com dedicação está avaliando meu esforço nesse desafio.
+
+Obrigado a todos da equipe do Viva, que fazem parte desse processo.
