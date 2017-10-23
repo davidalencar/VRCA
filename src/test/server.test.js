@@ -34,7 +34,7 @@ context('integration tests', () => {
         .post('/properties')
         .set('Content-Type', 'application/json')
         .send(validReq)
-        .expect(200)
+        .expect(201)
         .expect((res) => {
           expect(res.body.id).toBeDefined()
         })

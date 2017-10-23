@@ -5,7 +5,7 @@ module.exports = (app) => {
   app.post('/properties', (req, res) => {
     repository.createProperty(req.body)
       .then((propObj) => {
-        return res.status(200).send(propObj)
+        return res.status(201).send(propObj)
       })
       .catch((e) => {
         return res.status(400).send(e)
