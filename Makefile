@@ -18,6 +18,7 @@ st-dev:
 
 import-data:
 	npm run --prefix $(SRC_PATH) import-data
+	npm run --prefix $(SRC_PATH) import-data-test
 
 import-data-test:
 	npm run --prefix $(SRC_PATH) import-data-test
