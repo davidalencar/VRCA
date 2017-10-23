@@ -197,7 +197,7 @@ Consulta uma propriedade específica a partir do seu id.
 
 ```json
 {
-    "id": 100,
+    "id": 127,
     "title": "Imóvel código 127, com 5 quartos e 4 banheiros.",
     "price": 1898000,
     "description": "Laboris qui id cupidatat sunt quis magna minim aliqua ea veniam esse consectetur esse est. Incididunt et do ullamco cupidatat adipisicing.",
@@ -233,7 +233,7 @@ Na requisição os pontos A e B são representados respectivamente pelos parâme
     "foundProperties": 13,
     "properties": [
         {
-            "id": 1288,
+            "id": 1184,
             "title": "Imóvel código 1184, com 5 quartos e 4 banheiros.",
             "price": 1053000,
             "description": "Aliquip dolor elit adipisicing mollit Lorem. Duis adipisicing voluptate quis amet.",
@@ -246,8 +246,8 @@ Na requisição os pontos A e B são representados respectivamente pelos parâme
             ],
             "squareMeters": 103
         },
-        {...},
-        {...}
+        {"..."},
+        {"..."}
     ]
 }
 ```
