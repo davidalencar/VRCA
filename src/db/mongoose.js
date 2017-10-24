@@ -1,12 +1,12 @@
 /**
- * Connect the database 
+ * Connect to the application database
  */
 const mongoose = require('mongoose')
 
 mongoose.Promise = global.Promise
 mongoose.connect(process.env.MONGODB_URI, {
-  useMongoClient: true
-})
+    useMongoClient: true
+  })
   .then((cnn) => {
     log.info(`Connected to DB: ${cnn.host}:${cnn.port}/${cnn.name}`)
   })
