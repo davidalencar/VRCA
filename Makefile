@@ -27,8 +27,7 @@ test:
 	npm run --prefix $(SRC_PATH) test
 
 document:
-	jsdoc src/**/*.js
-	jsdoc --readme README.md  src/server.js
+	npm run --prefix $(SRC_PATH) doc
 
-github-master:
+github:
 	git push -u origin master

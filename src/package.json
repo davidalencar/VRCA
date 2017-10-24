@@ -10,7 +10,8 @@
     "start": "node server.js",
     "start-dev": "nodemon server.js",
     "lint": "eslint .",
-    "lint-fix": "eslint . --fix"
+    "lint-fix": "eslint . --fix",
+    "doc": "jsdoc ./**/*.js && jsdoc --readme ../README.md server.js"
   },
   "repository": {
     "type": "git",
