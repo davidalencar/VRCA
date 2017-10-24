@@ -5,7 +5,7 @@ Esse projeto vai nos ajudar a instalar uma unidade da nossa querida VivaReal no 
 
 Nós mapeamos todas as províncias e imóveis do antigo reino de Zillia e disponibilizamos os dados através de uma API REST, onde você pode consultar informações sobre um imóvel específico ou todos os imóveis em um determinado quadrante do planeta e até mesmo registrar novos imóveis.
 
-## Construido com:
+## Construído com:
 - [express](https://github.com/expressjs/express)
 - [mongoose](https://github.com/Automattic/mongoose)
 - [mongodb](https://github.com/mongodb/node-mongodb-native)
@@ -33,7 +33,7 @@ Um novo diretório chamado "VRCA" será criado e será a raiz do projeto. **_(/V
 ```
 make install
 ```
-Um script será executado e fará a instalação de todos os módulos requiridos no projeto
+Um script será executado e fará a instalação de todos os módulos requiridos no projeto.
 
 ## Configurando
 
@@ -75,7 +75,7 @@ Localize o arquivo de configuração **__"/src/config/config.json"__** com a seg
 
 Nosso mapeamento das províncias e imóveis do planeja  Spotippos gerou uma massa de dados que foi compilada em dois arquivos ".json", que estão presentes no nosso projeto em "src/util/data", que deve ser importada.
 
-É imperativo a importação desses dados para os bancos de dados antes da execução dos teste.
+É imperativa a importação desses dados para os bancos de dados antes da execução dos testes.
 
 Em **_(/VRCA$)_** execute o seguinte comando:
 
@@ -84,11 +84,11 @@ make import-data
 ```
 
 ## Executando testes
-Testes automatizados foram criados para garantir que todas as funcionalidades cumprem seu papel corretamente e continuarão cumprindo no decorrer das alterações de evolução do projeto.
+Testes automatizados foram criados para garantir que todas as funcionalidades cumpram seu papel corretamente e o continuem cumprindo no decorrer das alterações e evolução do projeto.
 
 Idealmente a execução desses testes fará parte de uma rotina de integração contínua.
 
-Para executar os teste basta utilizar o comando:
+Para executar os testes basta utilizar o comando:
 
 ```
 make test
@@ -142,7 +142,7 @@ Abaixo a tabela de validações sobre cada campo:
 |baths|Sim|1|4|
 |squareMeters|Sim|20|240|
 
- **Respota de sucesso -** Caso o corpo da requisição esteja correto a resposta seguirá a seguinte estrutura:
+ **Resposta de sucesso -** Caso o corpo da requisição esteja correto a resposta seguirá a seguinte estrutura:
 
 *HTTP status: 200*
 
@@ -162,7 +162,7 @@ Abaixo a tabela de validações sobre cada campo:
     "squareMeters": 210
 }
  ```
-**Respota de erro -** Caso o corpo da requisição contenha alguma irregularidade a nossa resposta seguirá esse estrutura:
+**Resposta de erro -** Caso o corpo da requisição contenha alguma irregularidade, a nossa resposta seguirá esse estrutura:
 
 *HTTP status: 400*
 
@@ -194,7 +194,7 @@ Abaixo a tabela de validações sobre cada campo:
 
 #### #Consultando imóveis
 
-Na versão atual nossa API suporta dois tipos de consultas por imóveis, que serão descritas abaixo:
+Na versão atual, nossa API suporta dois tipos de consultas por imóveis, que serão descritas abaixo:
 
 
 **## Consulta imóvel por `id`:**
@@ -206,7 +206,7 @@ Request:
 GET /properties/:id
 ```
 
-**Respota de sucesso -** Caso um imóvel corresponda a pesquisa a resposta seguirá a seguinte estrutura:
+**Resposta de sucesso -** Caso um imóvel corresponda a pesquisa, a resposta seguirá a seguinte estrutura:
 
 *HTTP status: 200*
 
@@ -227,7 +227,7 @@ GET /properties/:id
 }
 ```
 
-**Respota para imóvel não encontrado -** Caso o id solicitado não exista na base a resposta seguirá a seguinte estrutura:
+**Resposta para imóvel não encontrado -** Caso o id solicitado não exista na base, a resposta seguirá a seguinte estrutura:
 
 *HTTP status: 404 Not Found*
 
@@ -245,7 +245,7 @@ GET /properties?ax={integer}&ay={integer}&bx={integer}&by={integer}
 ```
 
 
-**Respota de sucesso -** Caso imóveis sejam encontrados dentro dessas coordenadas a resposta seguirá a seguinte estrutura:
+**Resposta de sucesso -** Caso imóveis sejam encontrados dentro dessas coordenadas, a resposta seguirá a seguinte estrutura:
 
 *HTTP status: 200*
 
@@ -272,7 +272,7 @@ GET /properties?ax={integer}&ay={integer}&bx={integer}&by={integer}
     ]
 }
 ```
-**Respota para nenhum imóvel encontrado -** Caso nenhum imóvel seja encontrado no quadrante:
+**Resposta para nenhum imóvel encontrado -** Caso nenhum imóvel seja encontrado no quadrante:
 
 *HTTP status: 404 Not Found*
 
@@ -280,7 +280,7 @@ GET /properties?ax={integer}&ay={integer}&bx={integer}&by={integer}
 
 ## Mantendo
 
-Muito ainda pode ser feito para evolução desse projeto e é importante termos alguns padrões e ferramentas para caminharmos com segurança.
+Muito ainda pode ser feito para a evolução desse projeto, é importante termos alguns padrões e ferramentas para caminharmos com segurança.
 
 #### #Documentando
 
