@@ -12,7 +12,6 @@ Nós mapeamos todas as províncias e imóveis do antigo reino de Zillia e dispon
 
 ## Primeiros passos
 
-
 #### #Pré-requisitos
 O que você precisa instalar para executar o projeto em sua máquina.
 
@@ -94,14 +93,6 @@ Para executar os teste basta utilizar o comando:
 ```
 make test
 ```
-
-## Documentando
-Para gerar a documentação da API automaticamente nós utilizamos o [jsdoc](https://www.npmjs.com/package/jsdoc). Idealmente esse processo deve compor uma rotina de integração contínua.
-
-```
-make document
-```
-
 ## Rodando a aplicação
 Uma vez que todas as configurações foram feitas, basta executar o comando abaixo em **_(/VRCA$)_**
 
@@ -286,6 +277,53 @@ GET /properties?ax={integer}&ay={integer}&bx={integer}&by={integer}
 *HTTP status: 404 Not Found*
 
 *Body: Sem informações*
+
+## Mantendo
+
+Muito ainda pode ser feito para evolução desse projeto e é importante termos alguns padrões e ferramentas para caminharmos com segurança.
+
+#### #Documentando
+
+Entendendo a importância de uma API bem documentada e pensando na manutenibilidade dos documentos e eficácia do processo de documentação, nós escolhemos como ferramenta da automatização a popular [jsdoc](https://www.npmjs.com/package/jsdoc).
+
+Para recriar a documentação, basta executar o comando:
+
+```
+make document
+```
+
+#### #Padronização do código
+
+Para nos ajudar a manter a organização e legibilidade dos códigos utilizamos a ferramenta [eslint](https://eslint.org/).
+
+Para executar a verificação do código utilize o comando:
+
+```
+make lint
+```
+
+Alguns erros podem ser corrigidos automaticamente utilizando o comando:
+
+```
+make lint-fix
+```
+
+## Próximos passos
+
+- Processo
+  - Disponibilizar operações de alteração e exclusão de imóveis.
+  - Disponibilizar operações para manutenção dos registros de províncias.
+  - Controle de autenticação de usuário.
+
+
+- Manutenibilidade
+  - Melhorar a geração de logs.
+  - Melhorar o tratamento de erros.
+  - Melhorar a geração de documentação.
+
+
+- Deploy
+  - Containerização ([Docker](https://www.docker.com/)).
 
 ## Agradecimentos
 
