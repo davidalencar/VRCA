@@ -29,3 +29,6 @@ test:
 document:
 	jsdoc src/**/*.js
 	jsdoc --readme README.md  src/server.js
+
+github-master:
+	git push -u origin master
