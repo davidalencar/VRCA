@@ -1,4 +1,5 @@
 # VRCA
+###### (Viva Real Challenge Accepted)
 
 Esse projeto vai nos ajudar a instalar uma unidade da nossa querida VivaReal no planeta Spotippos.
 
@@ -323,3 +324,9 @@ make lint-fix
 
 - Deploy
   - Containerização ([Docker](https://www.docker.com/)).
+
+## Agradecimentos
+
+Obrigado ${avaliador}, que com dedicação está avaliando meu esforço nesse desafio.
+
+Obrigado a todos da equipe do Viva, que fazem parte desse processo.
